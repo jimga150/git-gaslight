@@ -2,6 +2,14 @@
 
 Modify builtin/yourname.h to change the name that appears in git blame.
 
+run ./install_git_gaslight.sh to install this custom git binary to a parallel build directory and alias "git" to the custom binary. No other installs of git are affected.
+
+git has a few dependencies you might not necessaroly find on your OS by default.
+
+In order to install this on ubuntu 20.04 for example, it would be a good idea to run the following:
+
+sudo apt install autoconf zlib1g-dev asciidoc
+
 Below is the README as it appeared when this repo was cloned:
 
 [![Build status](https://github.com/git/git/workflows/CI/PR/badge.svg)](https://github.com/git/git/actions?query=branch%3Amaster+event%3Apush)
