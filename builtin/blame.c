@@ -28,7 +28,6 @@
 #include "blame.h"
 #include "refs.h"
 #include "tag.h"
-#include "yourname.h"
 
 static char blame_usage[] = N_("git blame [<options>] [<rev-opts>] [<rev>] [--] <file>");
 
@@ -510,13 +509,14 @@ static void emit_other(struct blame_scoreboard *sb, struct blame_entry *ent, int
 				       ent->s_lno + 1 + cnt);
 
 			if (!(opt & OUTPUT_NO_AUTHOR)) {
-				const char *name = your_name;
-				int pad;
+				const char *name;
+				git_config_get_value("user.name", &name);
+				int pad = 0;
 				/*if (opt & OUTPUT_SHOW_EMAIL)
 					name = ci.author_mail.buf;
 				else
 					name = ci.author.buf;*/
-				pad = longest_author - utf8_strwidth(name);
+				//pad = longest_author - utf8_strwidth(name);
 				printf(" (%s%*s %10s",
 				       name, pad, "",
 				       format_time(ci.author_time,
